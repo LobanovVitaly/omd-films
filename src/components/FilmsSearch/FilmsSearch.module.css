@@ -1,0 +1,47 @@
+.main{
+    position: relative;
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.searchForm{
+    padding: 10px;
+    background: azure;
+}
+
+.searchForm fieldset{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+.searchForm input{
+    width: 100%;
+    padding: 10px;
+}
+.searchForm input.inputError{
+    border-color: red;
+}
+.searchForm button{
+    padding: 15px;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    background: black;
+    cursor: pointer;
+    transition: .3s;
+}
+.searchForm button:hover{
+    background: #00000085;
+}
+
+@media(min-width: 576px){
+    .searchForm input{
+        width: 44%;
+    }
+}
+@media(min-width: 992px){
+    .searchForm input{
+        width: auto;
+    }
+}

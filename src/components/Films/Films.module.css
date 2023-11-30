@@ -1,0 +1,11 @@
+
+.searchResultTitle{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.films{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 20px;
+}

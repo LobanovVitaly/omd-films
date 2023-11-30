@@ -1,0 +1,31 @@
+.filmDetail{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+.filmDetail > img{
+    align-self: baseline;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 20px 0;
+}
+
+.filmDetail p:first-child{
+    margin-top: 0;
+}
+.title{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@media(min-width: 450px){
+    .filmDetail{
+        flex-wrap: nowrap;
+    }
+    .filmDetail > img{
+        position: sticky;
+        top: 0;
+        width: 40%;
+        margin: 0 20px 0 0;
+    }
+}

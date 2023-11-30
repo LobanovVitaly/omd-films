@@ -1,0 +1,39 @@
+.filmItem{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 0 30px;
+}
+
+.filmItem img{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.title{
+    margin: auto 0 10px;
+    font-size: 16px;
+}
+
+.year{
+    margin: 0;
+    font-size: 14px;
+}
+
+@media(min-width: 576px){
+    .filmItem{
+        width: 48%;
+    }
+}
+
+@media(min-width: 992px){
+    .filmItem{
+        width: 30%;
+    }
+}
+
+@media(min-width: 1200px){
+    .filmItem{
+        width: 22%;
+    }
+}
