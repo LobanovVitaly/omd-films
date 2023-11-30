@@ -1,3 +1,19 @@
+.backBtn{
+    display: inline-block;
+    margin: 20px 0;
+    padding: 15px;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    background: black;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .3s;
+}
+.backBtn:hover{
+    background: #00000085;
+}
+
 .filmDetail{
     display: flex;
     flex-wrap: wrap;

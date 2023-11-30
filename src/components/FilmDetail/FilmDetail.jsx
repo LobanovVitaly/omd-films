@@ -1,9 +1,10 @@
 import style from './FilmDetail.module.css'
 import React from "react";
-import withRouter from "../../Hoks/withRouter";
+import withRouter from "../../hocs/withRouter";
 import omdbAPI from "../../api/api";
 import commonStyle from "../../assets/css/common.module.css";
 import Preloader from "../Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 
 class FilmDetail extends React.Component {
@@ -59,6 +60,8 @@ class FilmDetail extends React.Component {
 
         return (
             <div className={commonStyle.container}>
+                <NavLink to='/' className={style.backBtn}>Back to list</NavLink>
+
                 {this.state.isLoading && <Preloader />}
                 {!this.state.isLoading && (
                     <div className={style.filmDetail}>
