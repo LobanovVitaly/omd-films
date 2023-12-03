@@ -35,6 +35,7 @@
     background: #00000085;
 }
 
+
 @media(min-width: 576px){
     .searchForm input{
         width: 44%;

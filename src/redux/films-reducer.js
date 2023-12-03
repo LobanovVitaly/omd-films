@@ -4,10 +4,13 @@ const SET_LOADING = 'films-reducer/SET_LOADING';
 const SET_FILMS = 'films-reducer/SET_FILMS';
 const SET_ERROR = 'films-reducer/SET_ERROR';
 const SET_SEARCH_QUERY = 'films-reducer/SET_SEARCH_QUERY';
+const SET_FORM_FIELDS_ERROR = 'films-reducer/SET_FORM_FIELDS_ERROR';
+const SET_TOTAL_RESULTS = 'films-reducer/SET_TOTAL_RESULTS';
+const SET_CURRENT_PAGE = 'films-reducer/SET_CURRENT_PAGE';
 
 let initialState = {
     films: [],
-    totalCount: null,
+    totalResults: null,
     currentPage: 1,
     error: '',
     query: {
@@ -46,6 +49,21 @@ const filmsReducer = (state = initialState, action) => {
                     [action.inputData[0]]: action.inputData[1]
                 }
             }
+        case SET_FORM_FIELDS_ERROR:
+            return {
+                ...state,
+                formFieldsError: action.formFieldsError
+            }
+        case SET_TOTAL_RESULTS:
+            return {
+                ...state,
+                totalResults: action.totalResults
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
         default: {
             return state;
         }
@@ -64,7 +82,14 @@ export const searchInputChanged = (inputData) => {
         type: SET_SEARCH_QUERY,
         inputData
     }
-}
+};
+
+export const setFormFieldsError = (formFieldsError) => {
+    return {
+        type: SET_FORM_FIELDS_ERROR,
+        formFieldsError
+    }
+};
 
 export const setFilms = (films) => {
     return {
@@ -73,6 +98,13 @@ export const setFilms = (films) => {
     }
 };
 
+export const setTotalResults = (totalResults) => {
+    return {
+        type: SET_TOTAL_RESULTS,
+        totalResults
+    }
+}
+
 export const setError = (error) => {
     return {
         type: SET_ERROR,
@@ -80,13 +112,21 @@ export const setError = (error) => {
     }
 };
 
+export const setCurrentPage = (number) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage: number
+    }
+};
+
+
 export const searchFilms = (query) => {
-    return (dispatch, state) => {
-        toggleLoading(true);
+    return (dispatch) => {
+        dispatch(setFormFieldsError(false));
+        dispatch(toggleLoading(true));
 
         omdbAPI.getFilms(query)
             .then((response) => {
-                console.log(response)
                 if(response.data.Response === "False"){
                     dispatch(setError(response.data.Error));
                 }
@@ -95,8 +135,9 @@ export const searchFilms = (query) => {
                 }
                 else{
                     dispatch(setFilms([...response.data.Search]));
+                    dispatch(setTotalResults(response.data.totalResults));
                 }
-                toggleLoading(false);
+                dispatch(toggleLoading(false));
             });
     }
 }

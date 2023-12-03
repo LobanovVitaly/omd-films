@@ -14,10 +14,10 @@ function App() {
           <Provider store={store}>
               <div className={style.App}>
                   <Header />
-                      <Routes>
-                          <Route path='/' element={<FilmsSearch />}/>
-                          <Route path='/*' element={<FilmDetail />}/>
-                      </Routes>
+                  <Routes>
+                      <Route path='/' element={<FilmsSearch />}/>
+                      <Route path='/*' element={<FilmDetail />}/>
+                  </Routes>
                   <Footer />
               </div>
           </Provider>

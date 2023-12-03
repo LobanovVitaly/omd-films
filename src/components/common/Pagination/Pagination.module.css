@@ -1,0 +1,22 @@
+.pagination{
+    display: flex;
+    padding: 20px 0;
+}
+.paginationBtn{
+    margin-right: 10px;
+    padding: 6px;
+    border: 1px solid #000;
+    background: azure;
+    cursor: pointer;
+    transition: .3s;
+}
+span.paginationBtn{
+    cursor: auto;
+}
+.paginationBtn_active{
+    background: #000;
+    color: #fff
+}
+.paginationBtn:not(.paginationBtn_active):hover {
+    background: #b3ffff;
+}

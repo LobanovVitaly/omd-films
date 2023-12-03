@@ -3,8 +3,9 @@ import React from "react";
 import withRouter from "../../hocs/withRouter";
 import omdbAPI from "../../api/api";
 import commonStyle from "../../assets/css/common.module.css";
-import Preloader from "../Preloader/Preloader";
+import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import noPicture from './../../assets/img/no-picture.png';
 
 
 class FilmDetail extends React.Component {
@@ -16,7 +17,6 @@ class FilmDetail extends React.Component {
             error: '',
             isLoading: true
         };
-
     }
     componentDidMount() {
         omdbAPI.getFilms(`&i=${this.props.router.location.pathname.slice(1)}`)
@@ -51,11 +51,13 @@ class FilmDetail extends React.Component {
         }
 
         let filmInfoItems = filmInfo.map((item) => {
-            return (
-                <>
-                    <p><b>{item[0]}:</b> {item[1]}</p>
-                </>
-            );
+            if(item[1] !== 'N/A'){
+                return (
+                    <>
+                        <p><b>{item[0]}:</b> {item[1]}</p>
+                    </>
+                );
+            }
         });
 
         return (
@@ -67,7 +69,7 @@ class FilmDetail extends React.Component {
                     <div className={style.filmDetail}>
                         {
                             <>
-                                <img src={data.Poster} alt={data.Title} title={data.Title}/>
+                                <img src={(data.Poster != 'N/A' )? data.Poster : noPicture} alt={data.Title}/>
 
                                 <div className={style.filmInfo}>
                                     <p className={style.title}>{data.Title}</p>
@@ -78,12 +80,9 @@ class FilmDetail extends React.Component {
                         }
                     </div>
                 )}
-
             </div>
         );
-
     }
 }
-
 
 export default withRouter(FilmDetail);
