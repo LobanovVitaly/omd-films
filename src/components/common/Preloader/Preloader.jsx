@@ -4,7 +4,7 @@ import image from '../../../assets/img/loader.gif'
 
 const Preloader = () => {
     return (
-        <img src={image} className={style.preloader} />
+        <img src={image} className={style.preloader} alt='Preloader'/>
     );
 }
 

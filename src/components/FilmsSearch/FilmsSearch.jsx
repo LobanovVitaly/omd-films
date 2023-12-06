@@ -86,7 +86,7 @@ class FilmsSearch extends React.Component{
                                 {this.props.error ? (<p><b>Error: </b> {this.props.error}</p>) : null}
 
                                 {!this.props.error && this.props.films.length > 0 &&
-                                    <Films data={this.props.films}/>
+                                    <Films data={this.props.films} currentPage={this.props.currentPage}/>
                                 }
                             </>
                         )
