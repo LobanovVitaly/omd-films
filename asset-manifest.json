@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/omd-films/static/css/main.93f1dc10.css",
-    "main.js": "/omd-films/static/js/main.7570d040.js",
+    "main.js": "/omd-films/static/js/main.50cdb506.js",
     "static/js/787.6fe82903.chunk.js": "/omd-films/static/js/787.6fe82903.chunk.js",
     "static/media/loader.gif": "/omd-films/static/media/loader.9f8a81ee77fb335ab546.gif",
     "static/media/no-picture.png": "/omd-films/static/media/no-picture.f103d928ae3774d5956f.png",
     "index.html": "/omd-films/index.html",
     "main.93f1dc10.css.map": "/omd-films/static/css/main.93f1dc10.css.map",
-    "main.7570d040.js.map": "/omd-films/static/js/main.7570d040.js.map",
+    "main.50cdb506.js.map": "/omd-films/static/js/main.50cdb506.js.map",
     "787.6fe82903.chunk.js.map": "/omd-films/static/js/787.6fe82903.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.93f1dc10.css",
-    "static/js/main.7570d040.js"
+    "static/js/main.50cdb506.js"
   ]
 }
