@@ -20,7 +20,7 @@ const FilmDetail = (props) => {
                 setError(response.data.Response === "False" ? response.data.Error : '');
                 setIsLoading(false);
             });
-    });
+    }, []);
 
     if(error !==''){
         return (
@@ -30,15 +30,14 @@ const FilmDetail = (props) => {
         );
     }
 
-    let data = film;
     let filmInfo = [];
 
-    for (let key in data) {
+    for (let key in film) {
         if (key === 'Title' ||
             key === 'Ratings' ||
             key === 'Poster') continue;
 
-        filmInfo.push([key, data[key]]);
+        filmInfo.push([key, film[key]]);
     }
 
     let filmInfoItems = filmInfo.map((item) => {
@@ -59,17 +58,13 @@ const FilmDetail = (props) => {
             {isLoading && <Preloader />}
             {!isLoading && (
                 <div className={style.filmDetail}>
-                    {
-                        <>
-                            <img src={(data.Poster !== 'N/A' )? data.Poster : noPicture} alt={data.Title}/>
+                        <img src={(film.Poster !== 'N/A' )? film.Poster : noPicture} alt={film.Title}/>
 
-                            <div className={style.filmInfo}>
-                                <p className={style.title}>{data.Title}</p>
+                        <div className={style.filmInfo}>
+                            <p className={style.title}>{film.Title}</p>
 
-                                {filmInfoItems}
-                            </div>
-                        </>
-                    }
+                            {filmInfoItems}
+                        </div>
                 </div>
             )}
         </div>

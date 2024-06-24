@@ -66,8 +66,19 @@ class FilmsSearch extends React.Component{
                     <form onSubmit={this.searchSubmit} className={style.searchForm}>
                         <fieldset>
                             <legend>Find movies</legend>
-                            <input type="text" name="s" value={this.props.query.s} onChange={this.inputHandle} placeholder="Search"/>
-                            <input type="text" name="t" className={this.props.formFieldsError ? style.inputError : ''} value={this.props.query.t} onChange={this.inputHandle} placeholder="Title"/>
+                            <input type="text"
+                                   name="s"
+                                   value={this.props.query.s}
+                                   onChange={this.inputHandle}
+                                   placeholder="Search"
+                            />
+                            <input type="text"
+                                   name="t"
+                                   className={this.props.formFieldsError ? style.inputError : ''}
+                                   value={this.props.query.t}
+                                   onChange={this.inputHandle}
+                                   placeholder="Title"
+                            />
                             <input type="text" name="i" className={this.props.formFieldsError ? style.inputError : ''} value={this.props.query.i} onChange={this.inputHandle} placeholder="IMDb ID"/>
                             <input type="number" name="y" value={this.props.query.y} onChange={this.inputHandle} placeholder="Year"/>
 
