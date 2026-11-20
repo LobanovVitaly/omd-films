@@ -1,11 +1,12 @@
 import React from 'react';
 import commonStyle from "../../assets/css/common.module.css";
-import style from "./FilmsSearch.module.css";
+import style from "./FilmsSearch.module.scss";
 import Films from "../Films/Films";
 import Preloader from "../common/Preloader/Preloader";
 import Pagination from "../common/Pagination/Pagination";
 import {connect} from "react-redux";
 import {searchFilms, searchInputChanged, setCurrentPage, setFormFieldsError} from "../../redux/films-reducer";
+import {ThemeContext} from "../../context/ThemeContext";
 
 class FilmsSearch extends React.Component{
     constructor(props){
@@ -79,8 +80,20 @@ class FilmsSearch extends React.Component{
                                    onChange={this.inputHandle}
                                    placeholder="Title"
                             />
-                            <input type="text" name="i" className={this.props.formFieldsError ? style.inputError : ''} value={this.props.query.i} onChange={this.inputHandle} placeholder="IMDb ID"/>
-                            <input type="number" name="y" value={this.props.query.y} onChange={this.inputHandle} placeholder="Year"/>
+                            <input type="text"
+                                   name="i"
+                                   className={this.props.formFieldsError ? style.inputError : ''}
+                                   value={this.props.query.i}
+                                   onChange={this.inputHandle}
+                                   placeholder="IMDb ID"
+                            />
+
+                            <input type="number"
+                                   name="y"
+                                   value={this.props.query.y}
+                                   onChange={this.inputHandle}
+                                   placeholder="Year"
+                            />
 
                             <button>Search</button>
 

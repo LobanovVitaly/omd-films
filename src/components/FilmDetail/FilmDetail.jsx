@@ -1,11 +1,12 @@
 import style from './FilmDetail.module.css'
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import withRouter from "../../hocs/withRouter";
 import omdbAPI from "../../api/api";
 import commonStyle from "../../assets/css/common.module.css";
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 import noPicture from './../../assets/img/no-picture.png';
+import {ThemeContext} from '../../context/ThemeContext';
 
 
 const FilmDetail = (props) => {
@@ -13,7 +14,13 @@ const FilmDetail = (props) => {
     const [error, setError]= useState('');
     const [isLoading, setIsLoading]= useState(true);
 
+    const theme = useContext(ThemeContext);
+
+    //console.log(props.router.location)
+    console.log(props.router.params)
+
     useEffect(()=>{
+        // можно переделать на useParams без хока withRouter
         omdbAPI.getFilms(`&i=${props.router.location.pathname.slice(1)}`)
             .then((response) => {
                 setFilm(response.data.Response === "False" ? {} : {...response.data});
@@ -52,21 +59,23 @@ const FilmDetail = (props) => {
     });
 
     return (
-        <div className={commonStyle.container}>
-            <NavLink to='/' className={style.backBtn}>Back to list</NavLink>
+        <div className={theme}>
+            <div className={commonStyle.container}>
+                <NavLink to='/' className={style.backBtn}>Back to list</NavLink>
 
-            {isLoading && <Preloader />}
-            {!isLoading && (
-                <div className={style.filmDetail}>
-                        <img src={(film.Poster !== 'N/A' )? film.Poster : noPicture} alt={film.Title}/>
+                {isLoading && <Preloader />}
+                {!isLoading && (
+                    <div className={style.filmDetail}>
+                            <img src={(film.Poster !== 'N/A' )? film.Poster : noPicture} alt={film.Title}/>
 
-                        <div className={style.filmInfo}>
-                            <p className={style.title}>{film.Title}</p>
+                            <div className={style.filmInfo}>
+                                <p className={style.title}>{film.Title}</p>
 
-                            {filmInfoItems}
-                        </div>
-                </div>
-            )}
+                                {filmInfoItems}
+                            </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
