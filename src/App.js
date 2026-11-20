@@ -6,7 +6,8 @@ import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
 import FilmDetail from "./components/FilmDetail/FilmDetail";
 import store from "./redux/store";
 import {Provider} from "react-redux";
-
+import About from "./components/About/About";
+import Contacts from "./components/Contacts/Contacts";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
                   <Routes>
                       <Route path='/' element={<FilmsSearch />}/>
                       <Route path='/*' element={<FilmDetail />}/>
+                      <Route path='/about' element={<About />}/>
+                      <Route path='/contacts' element={<Contacts />}/>
                   </Routes>
                   <Footer />
               </div>
